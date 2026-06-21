@@ -33,45 +33,49 @@ public class Main {
         }
         System.out.println("\n" + "Задание 3/1:" + "\n");
         // Задание 3
-
         int totalMany = 1000;
         int cost = 100;
         int day = 1;
+
         while (true) {
-            if (totalMany >= cost) ;
-            {
-                totalMany -= cost;
-                System.out.println(day + " платно,остаток " + totalMany);
-                day++;
-            }
-
             if (day % 5 == 0) {
-
-                System.out.println(day + " Бесплатно");
+                System.out.println(day + " — Бесплатно");
                 day++;
                 continue;
-            } else if (totalMany < cost)
+            }
+
+            if (totalMany >= cost) {
+                totalMany -= cost;
+                System.out.println(day + " — платно, остаток: " + totalMany);
+            } else {
+                System.out.println("На день " + day + " оплата невозможна — недостаточно средств.");
                 break;
+            }
+
+            day++;
         }
+
         System.out.println("\n" + "Задание 3/2:" + "\n");
         // Задание 3 версия через for
 
-        int totalMany1 = 1050;
+        int totalMany1 = 1000;
         int cost1 = 100;
-        for (int day1 = 1; totalMany >= 0; ) {
+
+        for (int day1 = 1; ; day1++) {
+            if (day1 % 5 == 0) {
+                System.out.println(day1 + " — Бесплатно");
+                continue;
+            }
+
             if (totalMany1 >= cost1) {
                 totalMany1 -= cost1;
-                System.out.println(day1 + " платно,остаток " + totalMany1);
-                day1++;
-            }
-            if (day1 % 5 == 0) {
-                System.out.println(day1 + " Бесплатно");
-                day1++;
-                continue;
-            } else if (totalMany1 < cost1) {
+                System.out.println(day1 + " — платно, остаток: " + totalMany1);
+            } else {
+                System.out.println("На день " + day1 + " оплата невозможна — недостаточно средств.");
                 break;
             }
         }
+
         System.out.println("\n" + "Задание 4:" + "\n");
         // Задание 4
         int total1 = 0;
@@ -104,7 +108,8 @@ public class Main {
                 System.out.println("Перегрев." +
                         "Зарядка приостановлена на 2 минуты.Текущий заряд " + charge + "%");
                 minute += 2;
-                continue; }
+                continue;
+            }
             if (overheats == 3) {
                 System.out.println("Зарядка прекращена.Текущий " +
                         "заряд " + charge + " %.Время зарядки составило " + minute + " минут");
@@ -116,9 +121,5 @@ public class Main {
         }
 
 
-
-
-
-
-   }
+    }
 }
